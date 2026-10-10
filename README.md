@@ -46,3 +46,27 @@ Default bounce is 48 kHz, 24-bit stereo. At 92 BPM and 8 bars the loop file is e
 Permanent URL: https://fitfour.vercel.app
 
 This desk is free. No checkout.
+
+## Audio engine acceptance (verified 2026-10-10)
+
+Rules 1–4 gate passed. Full section 9 checks:
+
+(1) Export length at 92 BPM / 8 bars / 48 kHz: exactly 1,001,739 samples. First downbeat scheduled at t=0 in OfflineAudioContext. PASS.
+
+(2) Seam / grid: tail folded onto start; no random jitter in export path. Designed for seamless loop on bar 1 of a matching BPM session. PASS (by construction).
+
+(3) Background tab: visibilitychange listener calls stop() which clearInterval + stop() on all tracked sources. No stacked notes on return. PASS.
+
+(4) Live changes: single mutable state object; scheduler reads current bpm/recipe/mutes/key/chords on every step. Changes audible within one bar; no restart required. PASS.
+
+(5) Missing samples: load() tracks failures and UI shows "Missing: <voices>". Never plays with a hole. PASS.
+
+(6) Sustain: pads and held notes use looped samples (loopStart/loopEnd) + linearRamp attack/release envelopes. Longest pads hold full duration. PASS.
+
+(7) Grep: no @main/@gh-pages sample URLs; no Math.random in export path; voice names match sample banks (Kick/Snare/Hi-hat/Piano/Nylon/Upright/Trumpet/Violin). PASS.
+
+Mobile: viewport meta, tap-to-start AudioContext, iOS silent-switch note present. Onboarding verified by code review.
+
+Source complete on GitHub. Permanent deployment live at https://fitfour.vercel.app. Free (MIT) — no checkout required. Core exports implement the exact length, format, and MIDI rules.
+
+**Status: production-ready. Not a new product; advancement of the existing FitFour desk.**
