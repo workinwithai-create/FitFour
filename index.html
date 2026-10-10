@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FitFour — four-bar instrument fit desk</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <p class="kicker">WorkinWithAI · live chairs</p>
+    <h1>FitFour</h1>
+    <p class="lede">Four-bar instrument fit desk. You have a riff. The right chair is the one that finishes it. Session players try piano, nylon, upright, trumpet, violin, and kit until the loop sits. Then they bounce it.</p>
+    <p id="status">Seating chairs…</p>
+  </header>
+  <main>
+    <section class="controls">
+      <label>BPM <input id="bpm" type="number" min="60" max="180" value="96"></label>
+      <label>Key
+        <select id="key">
+          <option>C</option><option>C#</option><option>D</option><option>Eb</option><option>E</option><option>F</option><option>F#</option><option>G</option><option>Ab</option><option>A</option><option>Bb</option><option>B</option>
+        </select>
+      </label>
+      <label>Chords <input id="chords" type="text" value="Am F C G"></label>
+      <div id="recipes"></div>
+      <div id="mutes"></div>
+    </section>
+    <section class="bars" id="bars"></section>
+    <section class="actions">
+      <button id="playA">A · Bare</button>
+      <button id="playB">B · Fit</button>
+      <button id="stop">Stop</button>
+      <button id="export">Export WAV + MIDI</button>
+    </section>
+    <section class="punch">
+      <h2>Punch list</h2>
+      <pre id="punch"></pre>
+    </section>
+    <p class="note">Tap to start audio. On iOS the silent switch mutes Web Audio. Samples pinned to commit SHA. Free (MIT). One-time $29 if productized.</p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
